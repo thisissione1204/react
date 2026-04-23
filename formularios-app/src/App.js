@@ -1,68 +1,79 @@
-import { useState} from "react";
+import { useState } from "react";
+
 function App() {
 
-const [nome, setNome] = useState("");
-const [email, setEmail] = useState("");
-const [idade, setIdade] = useState("");
 
-const [user, setUser] = useState({});
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [idade, setIdade] = useState("");
 
-  function enviarForm(e){
+  const [user, setUser] = useState({});
 
-    e.preventDefault();
-   
+
+  function cadastrarUser(e) {
+    
+    e.preventDefault()
 
     setUser({
-      nome: nome,
-      idade: idade, 
+      nome:nome,
       email: email,
+      idade: idade
     })
+    
+
+
   }
+
   return (
-    <div >
-     <h1>Cadastrando usuario</h1>
+    <div>
+      <h1>
+        Cadastrando usuario
+      </h1>
 
-      <form onSubmit={enviarForm}>
-
-        <label>Nome:</label> <br/>
+      <form onSubmit={cadastrarUser}>
+        <label>Nome:</label>
+        <br />
         <input type="text" placeholder="Digite o nome"
-        
-        value={nome}
-        onChange={(e)=>setNome(e.target.value)}
-      
-        ></input> <br/>
 
-        <label>Email:</label> <br/>
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
+        <br />
+
+        <label>Email:</label>
+        <br />
         <input type="text" placeholder="Digite o email"
-         value={email}
-         onChange={(e)=>setEmail(e.target.value)} 
-        
-        ></input><br/>
 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
 
+        <label>Idade:</label>
+        <br />
+        <input type="text" placeholder="Digite a idade"
 
-         <label>Idade:</label> <br/>
+          value={idade}
+          onChange={(e) => setIdade(e.target.value)}
+        />
 
-        <input type="text" placeholder="Digite sua idade" 
-        
-        value={idade}
-        onChange={(e)=>setIdade(e.target.value)}
+        <br />
+        <br />
 
-        ></input><br/>
-
-
-        <button type="submit">Registar</button> <br/><br/><br/>
+        <button>Cadastrar</button>
       </form>
+      <br />
+      <br />
 
-        <div>
-          <span>Bem-vindo: {user.nome}</span> <br/>
-          <span>Email: {user.email}</span> <br/>
-           <span>Idade: {user.idade}</span> <br/>
-        </div>
-    
+      <div>
+        <span>Nome: {user.nome}</span>
+        <br />
+        <span>Email:{user.email}</span>
+        <br />
+        <span>Idade:{user.idade}</span>
+      </div>
+
     </div>
-
-    
   );
 }
 
