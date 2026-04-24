@@ -33,7 +33,7 @@ function App() {
         />
         <br/>
         <br/>
-git 
+        
         <button>Registar</button>
       </form>
        <br/>
