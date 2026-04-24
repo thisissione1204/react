@@ -18,8 +18,6 @@ function App() {
   }
 
   
-
-
   return (
     <div>
       <h1>Lista de Tarefas</h1>
@@ -35,7 +33,7 @@ function App() {
         />
         <br/>
         <br/>
-
+git 
         <button>Registar</button>
       </form>
        <br/>
