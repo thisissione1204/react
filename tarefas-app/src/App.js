@@ -8,6 +8,16 @@ function App() {
   const [tarefas, setTarefas] = useState([]);
 
 
+  useEffect(()=>{
+
+    //alert("Tarefas sofreu alteracao")
+    
+
+
+
+  }, [tarefas])
+
+
   function enviarTarefa(e){
 
     e.preventDefault();
