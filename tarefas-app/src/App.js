@@ -1,25 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-
-function App() {
-
-  const [input, setInput] = useState("");
-
-  const [tarefas, setTarefas] = useState([]);
-
+function App(){
+  const [input, setInput] = useState('');
+  const [tarefas, setTarefas] = useState([
+    'Pagar a conta de luz',
+    'Estudar React JS'
+  ]);
 
   useEffect(()=>{
+    const tarefasStorage = localStorage.getItem('@tarefa');
 
-    //alert("Tarefas sofreu alteracao")
-    
+    if(tarefasStorage){
+      setTarefas(JSON.parse(tarefasStorage))
+    }
+
+  }, []);
 
 
+  useEffect(()=>{ 
+      localStorage.setItem('@tarefa', JSON.stringify(tarefas))
+  }, [tarefas]);
 
-  }, [tarefas])
 
-
-  function enviarTarefa(e){
-
+  function handleRegister(e){
     e.preventDefault();
 
     setTarefas([...tarefas, input]);
@@ -27,34 +30,31 @@ function App() {
 
   }
 
-  
-  return (
+  return(
     <div>
-      <h1>Lista de Tarefas</h1>
+      <h1>Cadastrando usuario</h1>
 
-      <form onSubmit={enviarTarefa}>
-        
-        <label>Nome da tarefa: </label> 
-        <br/>
-        <input type="text" placeholder="Digite a tarefa"
-        
-        value={input}
-        onChange={(e)=>setInput(e.target.value)}
-        />
-        <br/>
-        <br/>
-        
-        <button>Registar</button>
+      <form onSubmit={handleRegister}>
+        <label>Nome da tarefa:</label><br/>
+        <input 
+         placeholder="Digite uma tarefa" 
+         value={input}
+         onChange={ (e) => setInput(e.target.value) }
+        /><br/>
+        <button type="submit">Registrar</button>
       </form>
-       <br/>
+
+      <br/><br/>
+
       <ul>
-          {tarefas.map(index=>(
-            <li>{index}</li>
-          ))}
+        {tarefas.map( tarefa => (
+          <li key={tarefa}>{tarefa}</li>
+        ))}
       </ul>
-    
+
     </div>
   );
 }
 
 export default App;
+
