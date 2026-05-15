@@ -27,7 +27,6 @@ function App() {
     console.log(nutri); //agora sim o nutri ja tem o array de objetos
   }, [nutri])
 
-
   return (
     <>
       <div className='container'>
